@@ -7,10 +7,10 @@ source ./utils.sh
 
 check_root
 
-GROUPNAME=gs_2
-USERNAME=gs_2
-
+GROUPNAME=gs7
+USERNAME=gs67
 APPFOLDER=gsshop
+
 APPFOLDERPATH=/$GROUPNAME/$APPFOLDER
 
 # ###################################################################
@@ -30,7 +30,7 @@ fi
 grep "$USERNAME:" /etc/passwd
 if [ $? -ne 0 ]; then
     echo "Creating user account '$USERNAME'..."
-    useradd --system --gid $GROUPNAME --shell /bin/bash $USERNAME || error_exit "Could not create automation user account '$USERNAME'"
+    useradd --system --gid $GROUPNAME --shell /bin/bash --home $APPFOLDERPATH $USERNAME || error_exit "Could not create automation user account '$USERNAME'"
 fi
 
 # change ownership of the app folder to the newly created user account
@@ -41,8 +41,11 @@ chown -R $USERNAME:$GROUPNAME $APPFOLDERPATH || error_exit "Error setting owners
 chmod g+x $APPFOLDERPATH || error_exit "Error setting group execute flag"
 
 echo "Creating environment setup for django app..."
-su -l gs_2 << 'EOF'
+su -l $USERNAME << 'EOF'
 pwd
 python3.7 -m venv gsshop_env
 EOF
+
+# CLONE PROJECT
+
 
