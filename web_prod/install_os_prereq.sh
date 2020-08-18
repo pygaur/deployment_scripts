@@ -4,7 +4,7 @@ source ./utils.sh
 
 check_root
 
-LINUX_PREREQ=('git' 'build-essential' 'python3.7-dev' 'python3.7-venv' 'python3-pip' 'nginx' 'ufw')
+LINUX_PREREQ=('git' 'build-essential' 'supervisor' 'libpq-dev' 'python3.7-dev' 'python3.7-venv' 'python3-pip' 'nginx' 'ufw')
 
 # Test prerequisites
 echo "Checking if required packages are installed..."
