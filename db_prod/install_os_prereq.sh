@@ -4,7 +4,7 @@ source ./utils.sh
 
 check_root
 
-LINUX_PREREQ=('postgresql postgresql-contrib')
+LINUX_PREREQ=('postgresql' 'postgresql-contrib')
 
 # Test prerequisites
 echo "Checking if required packages are installed..."
