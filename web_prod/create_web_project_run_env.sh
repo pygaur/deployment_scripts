@@ -7,8 +7,8 @@ source ./utils.sh
 
 check_root
 
-GROUPNAME=gs7
-USERNAME=gs67
+GROUPNAME=gs
+USERNAME=gs
 APPFOLDER=gsshop
 
 APPFOLDERPATH=/$GROUPNAME/$APPFOLDER
