@@ -44,6 +44,13 @@ echo "Creating environment setup for django app..."
 su -l $USERNAME << 'EOF'
 pwd
 python3.7 -m venv gsshop_env
+git clone https://github.com/pygaur/gsshop.git
+cp /home/ubuntu/.env gsshop/src/src/settings/
+source gsshop_env/bin/activate
+pip install -r gsshop/src/requirements/production.txt
+cd gsshop/src
+python manage.py collectstatic --no-input
+python manage.py migrate
 EOF
 
 # CLONE PROJECT
